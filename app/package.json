@@ -1,0 +1,8 @@
+{
+    "name": "zhuangx",
+    "version": "1.0.0",
+    "description": "pretend to be a hacker!",
+    "main": "main.js",
+    "author": "brian",
+    "license": "MIT"
+}

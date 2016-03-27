@@ -1,0 +1,28 @@
+{
+    "name": "zhuangx",
+    "version": "1.0.0",
+    "description": "pretend to be a hacker!",
+    "main": "app/main.js",
+    "scripts": {
+        "build": "gulp build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/brian6peng/zhuangx.git"
+    },
+    "keywords": [
+        "electron",
+        "hacker"
+    ],
+    "author": "brian",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/brian6peng/zhuangx/issues"
+    },
+    "homepage": "https://github.com/brian6peng/zhuangx#readme",
+    "devDependencies": {
+        "electron-prebuilt": "^0.37.2",
+        "electron-packager": "^5.2.1",
+        "gulp": "^3.9.1"
+    }
+}
