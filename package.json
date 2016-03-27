@@ -4,7 +4,9 @@
     "description": "pretend to be a hacker!",
     "main": "app/main.js",
     "scripts": {
-        "build": "gulp build"
+        "start": "electron .",
+        "build-win": "gulp build-win",
+        "build-linux": "gulp build-linux"
     },
     "repository": {
         "type": "git",
