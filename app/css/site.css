@@ -1,0 +1,125 @@
+
+body{
+background: url('../images/bg.jpg') #fff no-repeat center center fixed;
+ user-select:none;
+-moz-user-select:none;
+-webkit-user-select:none;
+-ms-user-select:none;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+z-index:0;
+overflow:hidden;
+color:#cdfcff;
+font-family:Arial, monospace;
+font-weight:bold;
+ cursor:none;
+}
+#console {
+z-index:44;
+margin:50px;
+}
+.accessGranted{
+position:fixed;
+background:url(../assets/img/granted.gif);
+background-repeat:repeat;
+padding:20px;
+border:2px solid #83f352;
+text-shadow: 0.1em 0.1em 0.2em #000;
+width:300px;
+height:100px;
+top: 50%;
+left: 50%;
+margin-top: -50px;
+margin-left: -160px;
+text-align:center;
+color:#83f352;
+}
+.accessDenied{
+position:fixed;
+background:url(../assets/img/denied.gif);
+background-repeat:repeat;
+padding:20px;
+border:2px solid #F00;
+text-shadow: 0.1em 0.1em 0.2em #000;
+width:300px;
+height:70px;
+top: 50%;
+left: 50%;
+margin-top: -35px;
+margin-left: -160px;
+text-align:center;
+color:#F00;
+}
+.securityBreach{
+position:fixed;
+background:url(../assets/img/denied.gif);
+background-repeat:repeat;
+padding:20px;
+border:2px solid #F00;
+text-shadow: 0.1em 0.1em 0.2em #000;
+width:300px;
+height:160px;
+top: 50%;
+left: 50%;
+margin-top: -80px;
+margin-left: -160px;
+text-align:center;
+color:#F00;
+}
+.coldwar{
+position:fixed;
+border:2px solid #F00;
+top: 50%;
+left: 50%;
+margin-top: -200px;
+margin-left: -280px;
+text-align:center;
+color:#F00;
+}
+.radar{
+position:fixed;
+top: 5%;
+right: 5%;
+text-align:center;
+color:#F00;
+}
+.radar img {
+clear:both;
+width:250px;
+}
+.pony{
+position:fixed;
+right: 5%;
+bottom: 5%;
+margin-top: -64px;
+margin-left: -64px;
+z-index:499;
+}
+.pony img {
+width:128px;
+}
+.window{
+position:fixed;
+border:2px solid #F00;
+top: 50%;
+left: 50%;
+margin-top: -240px;
+margin-left: -320px;
+overflow:hidden;
+width:640px;
+height:480px;
+text-align:center;
+color:#F00;
+}
+ .center {
+position:fixed;
+height:100%;
+width:100%;
+z-index:-1;
+background-image:url('logo.png');
+background-repeat:no-repeat;
+background-position:center;
+}
+.footerbtns {position:fixed; bottom:10px; right:10px;}
