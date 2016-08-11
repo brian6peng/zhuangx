@@ -1,11 +1,13 @@
-// var fs = require('fs');
-
 $(
-    function() {
+    function () {
         $(document).keydown(
-            function(event) {
-                if (event.keyCode != 8) Typer.addText(event); //Capture the keydown event and call the addText, this is executed on page load
-                else { Typer.removeText(); event.preventDefault(); }
+            function (event) {
+                if (event.keyCode != 8)
+                    Typer.addText(event); 
+                else { 
+                    Typer.removeText(); 
+                    event.preventDefault(); 
+                }
             }
         );
     }
@@ -28,9 +30,9 @@ var Typer = {
     tagList: [],
     typeIntervalCounter: 0,
     typeInterval: false,
-    init: function() {// inizialize Hacker Typer
-        accessCountimer = setInterval(function() { Typer.updLstChr(); }, 500); // inizialize timer for blinking cursor
-        $.get(Typer.file, function(data) {// get the text file
+    init: function () {// inizialize Hacker Typer
+        accessCountimer = setInterval(function () { Typer.updLstChr(); }, 500); // inizialize timer for blinking cursor
+        $.get(Typer.file, function (data) {// get the text file
             Typer.text = data;// save the textfile in Typer.text
         });
         // fs.readFile('source.txt', function(err, data) {
@@ -39,16 +41,16 @@ var Typer = {
         // });
     },
 
-    content: function() {
+    content: function () {
         return $("#console").html();// get console content
     },
 
-    write: function(str) {// append to console content
+    write: function (str) {// append to console content
         $("#console").append(str);
         return false;
     },
 
-    removeText: function() {
+    removeText: function () {
         if (Typer.text) {
 			/*
 			var usedTags= new RegExp("<img.*?>", "gi");
@@ -71,7 +73,7 @@ var Typer = {
         }
     },
 
-    addText: function(key) {//Main function to add the code
+    addText: function (key) {//Main function to add the code
         if (Typer.text) { // otherway if text is loaded
 
             if (Typer.index <= 0) {
@@ -147,7 +149,7 @@ var Typer = {
         }
     },
 
-    updLstChr: function() { // blinking cursor
+    updLstChr: function () { // blinking cursor
         var cont = this.content(); // get console 
         if (cont.substring(cont.length - 1, cont.length) == "|") // if last char is the cursor
             $("#console").html($("#console").html().substring(0, cont.length - 1)); // remove it
