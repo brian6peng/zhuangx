@@ -3,10 +3,10 @@ $(
         $(document).keydown(
             function (event) {
                 if (event.keyCode != 8)
-                    Typer.addText(event); 
-                else { 
-                    Typer.removeText(); 
-                    event.preventDefault(); 
+                    Typer.addText(event);
+                else {
+                    Typer.removeText();
+                    event.preventDefault();
                 }
             }
         );
@@ -31,14 +31,12 @@ var Typer = {
     typeIntervalCounter: 0,
     typeInterval: false,
     init: function () {// inizialize Hacker Typer
-        accessCountimer = setInterval(function () { Typer.updLstChr(); }, 500); // inizialize timer for blinking cursor
+        accessCountimer = setInterval(function () {
+            Typer.updLstChr();
+        }, 500); // inizialize timer for blinking cursor
         $.get(Typer.file, function (data) {// get the text file
             Typer.text = data;// save the textfile in Typer.text
         });
-        // fs.readFile('source.txt', function(err, data) {
-        //     if (err) throw err;
-        //     Typer.text = data;
-        // });
     },
 
     content: function () {
