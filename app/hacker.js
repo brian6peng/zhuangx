@@ -83,14 +83,7 @@ var Typer = {
             var cont = Typer.content(); // get the console content
             if (cont.substring(cont.length - 1, cont.length) == "|") // if the last char is the blinking cursor
                 $("#console").html($("#console").html().substring(0, cont.length - 1)); // remove it before adding the text
-			/*
-			if(key.keyCode!=8){ // if key is not backspace
-				Typer.index+=Typer.speed;	// add to the index the speed
-			}else{
-				if(Typer.index>0) // else if index is not less than 0 
-					Typer.index-=Typer.speed;//	remove speed for deleting text
-			}
-			*/
+
             var text = Typer.text.substr(Typer.index, Typer.speed)//Typer.index-(Typer.speed));// parse the text for stripping html enities
             var rtn = new RegExp("\n", "g"); // newline regex
             //var rts= new RegExp("\\s", "g"); // whitespace regex
@@ -113,31 +106,6 @@ var Typer = {
             } else Typer.index += Typer.speed;
             $('body').scrollTop($("#console").height());
             window.scrollBy(0, 50); // scroll to make sure bottom is always visible 
-
-            // scroll to make sure bottom is always visible
-			/*
-			if(Typer.typeInterval) {
-				clearInterval(Typer.typeInterval);
-				Typer.typeIntervalCounter = 0;
-			}
-			Typer.typeInterval = setInterval(function() {
-			console.log(Typer.typeIntervalCounter);
-			//console.log(Typer.speed);
-			var text=Typer.text.substring(0,Typer.index-(Typer.speed-Typer.typeIntervalCounter));// parse the text for stripping html enities
-			var rtn= new RegExp("\n", "g"); // newline regex
-			//var rts= new RegExp("\\s", "g"); // whitespace regex
-			var rtt= new RegExp("\\t", "g"); // tab regex
-			text = text.replace(rtn,"<br/>").replace(rtt,"&nbsp;&nbsp;&nbsp;&nbsp;");//.replace(rts,"&nbsp;");// replace newline chars with br, tabs with 4 space and blanks with an html blank
-			//console.log(text);
-			$("#console").html(text);
-			$('body').scrollTop($("#console").height()); // scroll to make sure bottom is always visible
-			if(Typer.typeIntervalCounter>Typer.speed) {
-				clearInterval(Typer.typeInterval);
-				Typer.typeIntervalCounter = 0;
-			}
-			Typer.typeIntervalCounter++;
-			},10);
-			*/
         }
         if (key.preventDefault && key.keyCode != 122) { // prevent F11(fullscreen) from being blocked
             key.preventDefault()

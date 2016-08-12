@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <link href="css/site.css" rel="stylesheet" type="text/css">
+    <script>
+        window.nodeRequire = require;
+        delete window.require;
+        delete window.exports;
+        delete window.module;
+    </script>
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="hacker.js" type="text/javascript"></script>
 </head>
