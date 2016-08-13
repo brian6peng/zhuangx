@@ -13,15 +13,15 @@ $(
     }
 );
 
+var fs = nodeRequire('fs')
+
 var Typer = {
     text: null,
     accessCountimer: null,
     index: 0, // current cursor position
     speed: 2, // speed of the Typer
-    file: "http://hackcode.ishoulu.com/blackmesa/kernel.txt", //file, must be setted
     accessCount: 0, //times alt is pressed for Access Granted
     deniedCount: 0, //times caps is pressed for Access Denied
-    secCount: 0, //times caps is pressed for Access Denied
     coldCount: 0, //times caps is pressed for Access Denied
     secCount: 0, //times caps is pressed for Access Denied
     radarCount: 0,
@@ -34,9 +34,10 @@ var Typer = {
         accessCountimer = setInterval(function () {
             Typer.updLstChr();
         }, 500); // inizialize timer for blinking cursor
-        $.get(Typer.file, function (data) {// get the text file
-            Typer.text = data;// save the textfile in Typer.text
-        });
+        fs.readFile('app/source.txt', "utf8", function (error, data) {
+            if (error) throw error;
+            Typer.text = data;
+         });
     },
 
     content: function () {
@@ -50,23 +51,7 @@ var Typer = {
 
     removeText: function () {
         if (Typer.text) {
-			/*
-			var usedTags= new RegExp("<img.*?>", "gi");
-			//var foundTag = usedTags.exec(Typer.text.substring(Typer.index,-Typer.index));
-			//console.log(Typer.text.substring(Typer.index,-Typer.index));
-			var foundTags = /<img.*?>/gi.exec(Typer.index,-Typer.index);
-			console.log(foundTags)
-			while(usedTags.test(Typer.text.substring(Typer.index,-Typer.index))==true) {
-				console.log(usedTags.lastIndex,/<img.*?>/gi.exec(Typer.text.substring(usedTags.lastIndex)));
-			}
-			*/
-            //if(foundTag instanceof Array && foundTag[0] == Typer.text.substring(Typer.index,-foundTag[0].length)) {
-            //	Typer.index -= foundTag[0].length;//console.log(foundTag[0],foundTag)
-            //console.log(Typer.text.substring(Typer.index,-foundTag[0].length))
-            //}
-            //Typer.text.substring(Typer.index),foundTag)
             Typer.index = (Typer.index > 0) ? Typer.index - Typer.speed * 2 : 0;
-            //console.log(Typer.text.substring(0,Typer.index-(Typer.speed)))
             Typer.addText(event);
         }
     },
@@ -86,10 +71,8 @@ var Typer = {
 
             var text = Typer.text.substr(Typer.index, Typer.speed)//Typer.index-(Typer.speed));// parse the text for stripping html enities
             var rtn = new RegExp("\n", "g"); // newline regex
-            //var rts= new RegExp("\\s", "g"); // whitespace regex
             var rtt = new RegExp("\\t", "g"); // tab regex
             text = text.replace(rtn, "<br/>").replace(rtt, "&nbsp;&nbsp;&nbsp;&nbsp;");//.replace(rts,"&nbsp;");// replace newline chars with br, tabs with 4 space and blanks with an html blank
-            //console.log(text);
             $("#console").append(text);
 
             var usedTags = new RegExp("<img.*?>", "g"),
@@ -100,7 +83,6 @@ var Typer = {
                 Typer.index += foundTag.index + foundTag[0].length;
                 $("#console").append(foundTag[0]);
             } else if (foundSystemTag instanceof Array && foundSystemTag.index <= Typer.speed) {
-                //Typer.text.replace(/{(.*?)}/,foundSystemTag[1]);
                 Typer.index += foundSystemTag.index + foundSystemTag[0].length;
                 $("#console").append(foundSystemTag[1]);
             } else Typer.index += Typer.speed;
