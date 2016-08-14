@@ -10,10 +10,10 @@ gulp.task('build-win', () => {
         dir: path.join(__dirname, 'app'),
         platform: 'win32',
         asar: true,
-        // ignore: /(main-es6|renderer)/i,
         overwrite: true,
         out: path.join(__dirname, 'out'),
         icon: path.join(__dirname, 'build', 'icon.ico'),
+        version: "1.3.3",
         'version-string': {
             ProductName: 'zhuangx',
             CompanyName: 'brian liu'

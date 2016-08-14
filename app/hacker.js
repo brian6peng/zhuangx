@@ -13,7 +13,8 @@ $(
     }
 );
 
-var fs = nodeRequire('fs')
+var fs = nodeRequire('fs');
+var path = nodeRequire('path');
 
 var Typer = {
     text: null,
@@ -34,10 +35,10 @@ var Typer = {
         accessCountimer = setInterval(function () {
             Typer.updLstChr();
         }, 500); // inizialize timer for blinking cursor
-        fs.readFile('app/source.txt', "utf8", function (error, data) {
+        fs.readFile(path.join(__dirname, 'source.txt'), "utf8", function (error, data) {
             if (error) throw error;
             Typer.text = data;
-         });
+        });
     },
 
     content: function () {
